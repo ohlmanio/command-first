@@ -2,6 +2,10 @@ import { Command } from "./Command";
 import { Query } from "./Query";
 import { WorkspaceAction } from "./WorkspaceAction";
 
+/**
+ * The workspace is the "back-end" of command-first. Commands and queries 
+ * are processed by the workspace, documents are owned by the workspace.
+ */
 export interface Workspace {
   readonly id: string;
 
