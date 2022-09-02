@@ -9,7 +9,7 @@ export interface Workspace {
    * Returns a document from the workspace
    * @param id The id of the document to be fetched
    */
-  get(id: string): Document;
+  getDocument(id: string): Document;
   /**
    * Executes a command against the specified document (or this workspace) and
    * returns the resulting action.
