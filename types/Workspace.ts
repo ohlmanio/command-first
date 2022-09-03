@@ -1,5 +1,6 @@
 import { Command } from "./Command";
 import { Query } from "./Query";
+import { Subscription } from "./Subscription";
 import { WorkspaceAction } from "./WorkspaceAction";
 
 /**
@@ -30,4 +31,10 @@ export interface Workspace {
    * @param query the query to execute
    */
   query(id: string, query: Query): unknown;
+  /**
+   * Subscribe to actions created in this workspace
+   * @param id the id of the document to listen to, or the workspace itself
+   * @param handler the handler which will be called with actions as they occur
+   */
+  subscribe(id: string, handler: (action: WorkspaceAction) => void): Subscription;
 }
