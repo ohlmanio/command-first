@@ -1,4 +1,4 @@
-import { DocumentAction } from "./DocumentAction";
+import { DocumentAction } from "./DocumentAction.ts";
 
 export interface WorkspaceAction extends DocumentAction {
   /**

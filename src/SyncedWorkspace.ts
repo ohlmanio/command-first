@@ -1,16 +1,15 @@
-import { Command } from "../types/Command";
-import { Document } from "../types/Document";
-import { Query } from "../types/Query";
-import { Record } from "../types/Record";
-import { Subscription } from "../types/Subscription";
-import { WorkspaceAction } from "../types/WorkspaceAction";
+import { Command } from "../types/Command.ts";
+import { Document } from "../types/Document.ts";
+import { Query } from "../types/Query.ts";
+import { Record } from "../types/Record.ts";
+import { Subscription } from "../types/Subscription.ts";
+import { WorkspaceAction } from "../types/WorkspaceAction.ts";
 
 export default class SyncedWorkspace {
   constructor(public readonly id: string, private readonly backend: Backend) {}
 
   private documents: { [id: string]: RevisableRecord } = {};
-  private pendingRefresh: { [id: string]: Promise<Document> };
-
+  private pendingRefresh: { [id: string]: Promise<Document> } = {};
   getDocument(id: string): OptimisticResult<Document> {
     return {
       immediateResult: this.documents[id].snapshot(),
@@ -25,7 +24,6 @@ export default class SyncedWorkspace {
       .getDocument(id)
       .then((document) => this.saveDocument(id, document)));
   }
-
   private saveDocument(id: string, document: RevisableRecord): Document {
     this.documents[id] = document;
 
@@ -33,6 +31,7 @@ export default class SyncedWorkspace {
 
     return document.snapshot();
   }
+
   execute(id: string, command: Command): OptimisticResult<WorkspaceAction> {
     const hasImmediateResult = id in this.documents;
     const immediateResult = hasImmediateResult
@@ -98,10 +97,10 @@ export default class SyncedWorkspace {
 
   private subscriptions: {
     [id: string]: (ActionSubscription | DocumentSubscription)[];
-  };
+  } = {};
   private remoteSubscriptions: {
     [id: string]: Subscription;
-  };
+  } = {};
   subscribeToActions(
     id: string,
     handler: (action: WorkspaceAction, isFinal: boolean) => void,
@@ -144,7 +143,6 @@ export default class SyncedWorkspace {
 
     return subscription;
   }
-
   private unsubscribe(
     id: string,
     subscription: ActionSubscription | DocumentSubscription

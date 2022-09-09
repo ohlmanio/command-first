@@ -1,7 +1,8 @@
-import { Command } from "./Command";
-import { Query } from "./Query";
-import { Subscription } from "./Subscription";
-import { WorkspaceAction } from "./WorkspaceAction";
+import { Command } from "./Command.ts";
+import { Document } from "./Document.ts";
+import { Query } from "./Query.ts";
+import { Subscription } from "./Subscription.ts";
+import { WorkspaceAction } from "./WorkspaceAction.ts";
 
 /**
  * The workspace is the "back-end" of command-first. Commands and queries 

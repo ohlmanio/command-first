@@ -1,4 +1,4 @@
-import { Document } from "./Document";
+import { Document } from "./Document.ts";
 
 /**
  * A method which can create (or re-create) a document from the json

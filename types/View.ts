@@ -1,4 +1,4 @@
-import { Context } from "./Context"
+import { Context } from "./Context.ts"
 
 /**
  * A view is anything which can render something else in some context,

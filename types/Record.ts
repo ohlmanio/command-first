@@ -1,7 +1,7 @@
-import { Document } from "./Document";
-import { Command } from "./Command";
-import { Query } from "./Query";
-import { DocumentAction } from "./DocumentAction";
+import { Document } from "./Document.ts";
+import { Command } from "./Command.ts";
+import { Query } from "./Query.ts";
+import { DocumentAction } from "./DocumentAction.ts";
 
 /**
  * A Record wraps an immutable Document object providing current and past

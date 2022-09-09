@@ -1,5 +1,5 @@
-import { Context } from "./Context";
-import { DocumentFactory } from "./DocumentFactory";
+import { Context } from "./Context.ts";
+import { DocumentFactory } from "./DocumentFactory.ts";
 
 /**
  * A Document is an immutable object which responds to commands and queries.
