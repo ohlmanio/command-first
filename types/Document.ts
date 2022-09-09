@@ -1,3 +1,4 @@
+import { Context } from "./Context";
 import { DocumentFactory } from "./DocumentFactory";
 
 /**
@@ -16,12 +17,12 @@ export interface Document {
   execute(
     command: string,
     args: Record<string, unknown>,
-    context: unknown
+    context: Context
   ): Document;
   query(
     query: string,
     args: Record<string, unknown>,
-    context: unknown
+    context: Context
   ): unknown;
   toJSON(): [DocumentFactory, Record<string, unknown>];
 }
